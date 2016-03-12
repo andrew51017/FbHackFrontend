@@ -11,7 +11,7 @@
 
     vm.awesomeThings = [
       {
-        'title': 'AngularJS',
+        'title': 'AngularJS Hello Diane',
         'url': 'https://angularjs.org/',
         'description': 'HTML enhanced for web apps!',
         'logo': 'angular.png'

@@ -7,8 +7,12 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
-    <link rel="stylesheet" href="app/vendor.css">
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+
+    <link rel="stylesheet" href="app/vendor.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
     <!-- bower:css -->
     <!-- run `gulp inject` to automatically populate bower styles dependencies -->
     <!-- endbower -->
@@ -18,14 +22,28 @@
     <!-- inject:css -->
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
-    <!-- endbuild -->
+    <!-- endbuild -->
+
   </head>
-  <body>
+  <body id="page-top">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Mercury</h1>
+                <h2>Your one stop shop for everything delivered!</h2>
+                <hr>
+                <p>Connecting People, Couriers and Small Businesses.<br> What you want, when you want it, for the price you need.</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            </div>
+        </div>
+    </header>
+
     <div ui-view></div>
+    
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -42,8 +60,10 @@
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
-
-    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+
+
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+
     <!-- inject:js -->
     <!-- js files will be automatically insert here -->
     <!-- endinject -->
