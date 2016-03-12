@@ -34,6 +34,26 @@
         templateUrl: 'app/account/register.html',
         controller: 'RegisterController',
         controllerAs: 'account'
+      })
+      .state('app.jobs', {
+        url: '/jobs',
+        templateUrl: 'app/layout/uiview.html',
+        abstract: true
+      })
+      .state('app.jobs.myjobs', {
+        url: '/my',
+        templateUrl: 'app/jobs/myjobs.html',
+        controller: 'MyJobsController'
+      })
+      .state('app.jobs.availablejobs', {
+        url: '/available',
+        templateUrl: 'app/jobs/availablejobs.html',
+        controller: 'AvailableJobsController'
+      })
+      .state('app.jobs.status', {
+        url: '/status/:id',
+        templateUrl: 'app/jobs/status.html',
+        controller: 'StatusController'
       });
 
     $urlRouterProvider.otherwise('/');
