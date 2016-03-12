@@ -3,7 +3,7 @@
 
   angular
     .module('desktop')
-    .controller('StatusController', LoginController);
+    .controller('StatusController', StatusController);
 
   /** @ngInject */
   function StatusController($scope, $rootScope, $location) {

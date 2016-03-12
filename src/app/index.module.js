@@ -7,6 +7,11 @@
 
   function config($stateProvider, $urlRouterProvider) {
     $stateProvider
+      .state('store', {
+        url: '/store',
+        templateUrl: 'app/shopdemo/store.html',
+        controller: 'StoreController'
+      })
       .state('home', {
         url: '/',
         templateUrl: 'app/main/main.html',

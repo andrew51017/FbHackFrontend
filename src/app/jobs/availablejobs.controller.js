@@ -3,7 +3,7 @@
 
   angular
     .module('desktop')
-    .controller('AvailableJobsController', LoginController);
+    .controller('AvailableJobsController', AvailableJobsController);
 
   /** @ngInject */
   function AvailableJobsController($scope, $rootScope, $location) {
