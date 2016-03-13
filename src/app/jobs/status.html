@@ -15,14 +15,15 @@
 			      <img class="img-responsive"  src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_fragile_parcel.png" alt="collected_from_business">
 			      <div class="caption">
 			        <h3>Has the Courier Accepted the Parcel from You?</h3>
-			        <p><a class="btn btn-primary" role="button" ng-click="doCollectedByCourier()" >Yes</a></p>
+			        <p><a class="btn btn-primary" role="button" ng-click="doCollectedByCourier()" ng-if="!picked_up">Yes</a></p>
+			        <p ng-if="picked_up" > Yes! The parcel is on its way! </p>
 			      </div>
 			    </div>
 			  </div>
 			</div>
 		</div>
 	</div>
-	<div class="courier" ng-if="showCourier">
+	<div class="courier" ng-if="showCourier && biddingComplete">
 		<div class="container">
 			<div class="row">
 			  <div class="col-sm-6 col-md-4 col-md-offset-2">
@@ -30,7 +31,8 @@
 			      <img class="img-responsive" src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_fragile_parcel.png" alt="collected_by_courier">
 			      <div class="caption">
 			        <h3>Have You Accepted the Parcel from the Business?</h3>
-			        <p><a class="btn btn-primary" role="button" ng-click="doAcceptedFromBusiness()">Yes</a></p>
+			        <p><a class="btn btn-primary" role="button" ng-click="doAcceptedFromBusiness()" ng-if="!collected">Yes</a></p>
+			        <p ng-if="collected" > Yes! You have collected the parcel! Have a safe journey! </p>
 			      </div>
 			    </div>
 			  </div>
@@ -39,14 +41,15 @@
 			      <img class="img-responsive" src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_labelled_parcel.png" alt="collected_by_courier">
 			      <div class="caption">
 			        <h3>Have You Completed the Delivery?</h3>
-			        <p><a class="btn btn-primary" role="button" ng-click="doCompletedDelivery()">Yes</a></p>
+			        <p><a class="btn btn-primary" role="button" ng-click="doCompletedDelivery()" ng-if="!complete">Yes</a></p>
+			        <p ng-if="complete" > Yes! You have completed this job! You should receive your payment in the next 3-5 working days! </p>
 			      </div>
 			    </div>
 			  </div>
 			</div>
 		</div>
 	</div>
-	<div class="customer" ng-if="showCustomer">
+	<div class="customer" ng-if="showCustomer && biddingComplete">
 		<div class="container">
 			<div class="row">
 			  <div class="col-sm-6 col-md-4 select_courier">
@@ -72,12 +75,16 @@
 			      <img class="img-responsive" src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_fragile_parcel.png" alt="collected_by_courier">
 			      <div class="caption">
 			        <h3>Have You Received Your Parcel?</h3>
-			        <p><a class="btn btn-primary" role="button" ng-click="doReceivedByCustomer()" >Yes</a></p>
+			        <p><a class="btn btn-primary" role="button" ng-click="doReceivedByCustomer()"ng-if="!received" >Yes</a></p>
+			        <p ng-if="received" > Wonderful! Enjoy your delivery! </p>
 			      </div>
 			    </div>
 			  </div>
 			</div>
 		</div>
+	</div>
+	<div ng-if="(showCourier || showCustomer) && !biddingComplete">
+	<p class="text-center">Bidding has not been completed.</p>
 	</div>
 
 </section>
@@ -91,7 +98,7 @@
 		</div>
 	</div>
 	<div class="bids">
-		<table class="table">
+		<table class="table" id="tableStyle">
 			<thead>
 				<tr>
 					<th>#</th>
@@ -100,17 +107,18 @@
 					<th> Bid Description </th>
 					<th> Proposed Delivery Date </th>
 					<th> Proposed Delivery Time </th>
-					<th> Select Bidder </th>
+					<th ng-if="showCustomer"> Select Bidder </th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="bid in bids">
+					<td> {{ bid.id}} </td>
 					<td> {{ bid.user_id }} </td>
 					<td> {{ bid.price }} </td>
 					<td> {{ bid.description }} </td>
 					<td> {{ bid.proposed_delivery_date }} </td>
 					<td> {{ bid.proposed_delivery_time }} </td>
-					<td> <a class="btn btn-primary" role="button" ng-click="doSelectedByCustomer(bid.user_id)" >Yes</a> </td>
+					<td ng-if="showCustomer">  <a class="btn btn-primary" role="button" ng-click="doSelectedByCustomer(bid.user_id)" >Yes</a> </td>
 				</tr>
 			</tbody>
 		</table>
