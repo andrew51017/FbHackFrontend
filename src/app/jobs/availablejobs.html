@@ -43,7 +43,7 @@
     <td>{{ job.destination }}</td>
     <td>{{ job.job_price }}</td>
     <td>13/03/2016</td>
-    <td style="text-align:center;"> <a ui-sref="app.account.login" class="btn btn-primary">Bid Now!</a> </td>
+    <td style="text-align:center;"> <a ui-sref="app.jobs.bid({id : job.id})" class="btn btn-primary">Bid Now!</a> </td>
   </tr>
 </table>
 
