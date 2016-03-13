@@ -22,6 +22,8 @@
             var userID = res.userId;
             localStorage.setItem('userID', userID);
 
+            $rootScope.$broadcast("refreshLogin", null);
+
             if ($stateParams.returnState == '')
             {
               $location.path("/app/jobs/my");
