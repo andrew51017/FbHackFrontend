@@ -5,7 +5,7 @@
     .module('desktop', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap', 'lbServices', 'uiGmapgoogle-maps'])
     .config(config);
 
-  function config($stateProvider, $urlRouterProvider) {
+  function config($stateProvider, $urlRouterProvider, $httpProvider) {
     $stateProvider
       .state('store', {
         url: '/store',
@@ -29,7 +29,7 @@
         abstract: true
       })
       .state('app.account.login', {
-        url: '/login',
+        url: '/login/:returnState?',
         templateUrl: 'app/account/login.html',
         controller: 'LoginController',
         controllerAs: 'account'
@@ -62,6 +62,22 @@
       });
 
     $urlRouterProvider.otherwise('/');
+
+    $httpProvider.interceptors.push(function($q, $location, LoopBackAuth) {
+      return {
+        responseError: function(rejection) {
+          if (rejection.status == 401) {
+            //Now clearing the loopback values from client browser for safe logout...
+            LoopBackAuth.clearUser();
+            LoopBackAuth.clearStorage();
+            $location.nextAfterLogin = $location.path();
+            $location.path('/app/account/login');
+          }
+          return $q.reject(rejection);
+        }
+      };
+    });
+
   }
 
 })();

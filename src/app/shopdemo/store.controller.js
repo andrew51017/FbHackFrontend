@@ -8,10 +8,14 @@
   /** @ngInject */
   function StoreController($scope, $rootScope, $location, ApplicationUser, Job) {
 
+  		var userId = localStorage.getItem("userID");
+
+  		if (userId == null)
+  		{
+  			$location.path("/app/account/login/store");
+  		}
 
   		$scope.submitJob = function() {
-
-	  		var userId = $rootScope.userId;
 
 	  		var job = {
 			  "title": "Ship a CPU",

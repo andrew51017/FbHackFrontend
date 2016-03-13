@@ -12,22 +12,20 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="page-scroll" href="#about">About</a>
+                <li ng-show="!loggedIn">
+                    <a href="#" class="page-scroll" ui-sref="app.account.login">Login</a>
+                </li>
+                <li ng-show="loggedIn">
+                    <a href="#" class="page-scroll" ng-click="logout()">Logout</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#services">Services</a>
+                    <a class="page-scroll" ui-sref="app.jobs.myjobs">My Jobs</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#portfolio">Login</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#portfolio">Signup</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
+                    <a class="page-scroll" ui-sref="app.jobs.availablejobs">Available Jobs</a>
                 </li>
             </ul>
         </div>
