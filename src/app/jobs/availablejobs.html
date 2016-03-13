@@ -29,7 +29,7 @@
 <table id="tableStyle">
   <tr>
     <th>Job</th>
-    <th>Contact</th>
+    <th>Job Description</th>
     <th>Current Location</th>
     <th>Delivery Location</th>	
     <th>Max Price</th>
@@ -38,7 +38,7 @@
   </tr>
   <tr ng-repeat="job in jobs">
     <td>{{ job.title }}</td>
-    <td>{{ job.customer_id }}</td>
+    <td>{{ job.description }}</td>
     <td>{{ job.location }}</td>
     <td>{{ job.destination }}</td>
     <td>{{ job.job_price }}</td>
