@@ -101,15 +101,22 @@
   		$scope.job.$save();
   	};
 
-  	$scope.doSelectedByCustomer = function(user_id){
-  		$scope.bid = Job.bids({
-  		id: $scope.job.id,
-  		filter: {
-  		    where: { user_id: user_id },
-  		  }
-  		 });
-  		$scope.bid.winning_bid = true;
-  		$scope.bid.$save();
+  	$scope.doSelectedByCustomer = function(bid){
+
+  		Jobs.findById({ id: bid.job_id}, function(res) {
+
+  			bid.winning_bid = true; 
+  			bid.$save();
+
+  			res.bidding_complete = true; 
+  			res.$save();
+
+  			$location.path('/app/jobs/status/' + bid.job_id);
+
+  		}, function(err) {
+
+  		});
+
   	}
 
 
