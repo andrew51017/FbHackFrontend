@@ -29,7 +29,7 @@
         abstract: true
       })
       .state('app.account.login', {
-        url: '/login',
+        url: '/login/:returnState?',
         templateUrl: 'app/account/login.html',
         controller: 'LoginController',
         controllerAs: 'account'

@@ -8,6 +8,22 @@
 		<th>Title</th>
 		<th>Status</th>
 		<th>Details</th>
+		<th></th>
+	</tr>
+	<tr ng-repeat="job in myJobs">
+		<td>{{ job.title }}</td>
+		<td>
+			{{
+				parseStatus(job)
+			}}
+		</td>
+		<td>
+			<span class="label label-default">Description</span>  {{ job.description }}<br/>
+			<span class="label label-default">Location</span>  {{ job.location }}<br/>
+			<span class="label label-default">Destination</span>  {{ job.destination }}<br/>
+			<span class="label label-default">Item price</span>  {{ job.item_price }}
+		</td>
+		<td><a ui-sref="app.jobs.status({id: job.id})"><span class="fa fa-info-circle"></span> View status</a></td>
 	</tr>
 </table>
 
@@ -22,3 +38,4 @@
 </table>
 
 </div>
+
