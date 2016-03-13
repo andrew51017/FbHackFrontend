@@ -8,5 +8,7 @@
   /** @ngInject */
   function MyJobsController($scope, $rootScope, $location) {
 
+  }
+
 
 })();
