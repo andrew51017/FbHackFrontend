@@ -92,7 +92,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="bid in bids">
+				<tr ng-repeat="bid in bids" ng-class="{'alert-success': bid.winning_bid}">
 					<td> {{ bid.user_id }} </td>
 					<td> {{ bid.price }} </td>
 					<td> {{ bid.description }} </td>
