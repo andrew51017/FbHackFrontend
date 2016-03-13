@@ -9,4 +9,6 @@
   function MyJobsController($scope, $rootScope, $location) {
 
   }
+
+
 })();
