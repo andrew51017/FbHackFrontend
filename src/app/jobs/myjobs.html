@@ -14,7 +14,7 @@
 		<td>{{ job.title }}</td>
 		<td>
 			{{
-				parseStatus(job)
+				parseStatus(job);
 			}}
 		</td>
 		<td>
@@ -43,6 +43,8 @@
 		<td><a ng-show="bid.rowStatus == 'alert-success'" ui-sref="app.jobs.status({id: bid.job_id})"><span class="fa fa-info-circle"></span> View status</a></td>
 	</tr>
 </table>
+
+
 
 </div>
 

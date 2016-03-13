@@ -19,12 +19,9 @@
 
   	$scope.job = Job.findById({ id: job_id}, function(job) {
 
-  		$scope.winner = Job.bids({
-  			id: $scope.job.id,
-  			filter: {
-  			    where: { winning_bid: true },
-  			  }
-  			 });
+  		$scope.winner = Bid.find({filter: {where: {and: [{job_id: job_id}, {winning_bid: true}]} }}, function(res) {
+
+        var winner = res == null ? {} : res[0];
 
   		$scope.biddingComplete = job.bidding_complete;
 
@@ -32,9 +29,10 @@
 	  	 	$scope.showCustomer = true;
 	  	 } else if (userId == job.business_id){
 	  	 	$scope.showBusiness = true;
-	  	 } else if (userId == $scope.winner.user_id){
+	  	 } else if (userId == winner.user_id){
 	  	 	$scope.showCourier = true;
 	  	 };
+
 
 	  	 if($scope.job.accepted_by_courier == false){
 	  	 	$scope.collected = false;
@@ -73,6 +71,11 @@
 		$scope.bids = Job.bids({
 		  id: $scope.job.id,
 		});	  
+
+
+  		}, function(err) {});
+
+
 
 
   	}, function(err) {
@@ -121,7 +124,13 @@
 
   		});
 
-  	}
+  	};
+
+  	// $scope.doGoToCourier = function(bid) {
+  	//   $scope.showCourier = true;
+  	//   $scope.showCustomer = false;
+  	//   $scope.job.$save();
+  	// };
 
 
   }
