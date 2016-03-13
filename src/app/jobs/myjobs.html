@@ -31,9 +31,16 @@
 
 <table id="tableStyle"> 
 	<tr>
-		<th>Win</th>
-		<th>Pending</th>
-		<th>Lost</th>
+		<th>Price</th>
+		<th>Description</th>
+		<th>Proposed date and time</th>
+		<th></th>
+	</tr>
+	<tr ng-repeat="bid in myBids" class="{{ bid.rowStatus }}">
+		<td>{{ bid.price }}</td>
+		<td>{{ bid.description }}</td>
+		<td>{{ bid.proposed_delivery_date }} {{ bid.proposed_delivery_time }}</td>
+		<td><a ng-show="bid.rowStatus == 'alert-success'" ui-sref="app.jobs.status({id: bid.job_id})"><span class="fa fa-info-circle"></span> View status</a></td>
 	</tr>
 </table>
 
