@@ -59,6 +59,11 @@
         url: '/status/:id',
         templateUrl: 'app/jobs/status.html',
         controller: 'StatusController'
+      })
+      .state('app.jobs.bid', {
+        url: '/bid/:id',
+        templateUrl: 'app/jobs/bid.html',
+        controller: 'BidController'
       });
 
     $urlRouterProvider.otherwise('/');
