@@ -29,6 +29,25 @@
 
   	});
 
+    $scope.parseStatus = function(singleJob) {
+
+      if (singleJob.received_by_customer) {
+        return "Delivery complete";
+      }
+      else if (singleJob.dropped_by_courier) {
+        return "Package Delivered - awaiting confirmation from customer"; 
+      }
+      else if (singleJob.accepted_by_courier) {
+        return "Package with courier";
+      }
+      else if (singleJob.collected_from_business) {
+        return "Package collected from courier - awaiting confirmation";
+      }
+
+      return "Package not yet shipped";
+
+    }; 
+
   	var getBidStatus = function(bid) {
 
   		if (bid.winning_bid)
@@ -53,7 +72,7 @@
   			}); 
   		}
 
-  	}
+  	};
 
  
 
