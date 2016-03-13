@@ -1,27 +1,14 @@
-<section id="status">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<h2 class="section-heading">Your Job Status</h2>
-				<hr class="primary">
-			</div>
-		</div>
-	</div>
+<div class="container">
+	<div> <h1 style="text-align:center;">Your Job Status</h1></div>
+
 	<div class="business" ng-if="showBusiness">
-		<div class="container">
-			<div class="row">
-			  <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-6">
-			    <div style="border:0; text-align: center;">
 			      <img class="img-responsive"  src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_fragile_parcel.png" alt="collected_from_business">
 			      <div class="caption">
 			        <h3>Has the Courier Accepted the Parcel from You?</h3>
 			        <p><a class="btn btn-primary" role="button" ng-click="doCollectedByCourier()" ng-if="!picked_up">Yes</a></p>
 			        <p ng-if="picked_up" > Yes! The parcel is on its way! </p>
 			      </div>
-			    </div>
-			  </div>
-			</div>
-		</div>
+
 	</div>
 	<div class="courier" ng-if="showCourier && biddingComplete">
 		<div class="container">
@@ -87,22 +74,12 @@
 	<p class="text-center">Bidding has not been completed.</p>
 	</div>
 
-</section>
-<section id="bidding">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<h2 class="section-heading">Current Bids</h2>
-				<hr class="primary">
-			</div>
-		</div>
-	</div>
+	<h2>Current Bids</h2>
 	<div class="bids">
 		<table class="table" id="tableStyle">
 			<thead>
 				<tr>
-					<th>#</th>
-					<th> Courier Username </th>
+					<th> Courier Name </th>
 					<th> Bid Price </th>
 					<th> Bid Description </th>
 					<th> Proposed Delivery Date </th>
@@ -112,7 +89,6 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="bid in bids">
-					<td> {{ bid.id}} </td>
 					<td> {{ bid.user_id }} </td>
 					<td> {{ bid.price }} </td>
 					<td> {{ bid.description }} </td>
@@ -123,4 +99,4 @@
 			</tbody>
 		</table>
 	</div>
-</section>
+</div>
