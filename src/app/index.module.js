@@ -2,11 +2,16 @@
   'use strict';
 
   angular
-    .module('desktop', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap', 'lbServices'])
+    .module('desktop', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap', 'lbServices', 'uiGmapgoogle-maps'])
     .config(config);
 
   function config($stateProvider, $urlRouterProvider) {
     $stateProvider
+      .state('store', {
+        url: '/store',
+        templateUrl: 'app/shopdemo/store.html',
+        controller: 'StoreController'
+      })
       .state('home', {
         url: '/',
         templateUrl: 'app/main/main.html',
@@ -24,7 +29,7 @@
         abstract: true
       })
       .state('app.account.login', {
-        url: '/login',
+        url: '/login/:returnState?',
         templateUrl: 'app/account/login.html',
         controller: 'LoginController',
         controllerAs: 'account'

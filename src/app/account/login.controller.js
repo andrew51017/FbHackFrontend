@@ -6,7 +6,7 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController($scope, $rootScope, $location, ApplicationUser) {
+  function LoginController($scope, $rootScope, $stateParams, $state, $location, ApplicationUser) {
 
     // Perform the login action when the user submits the login form
     $scope.doLogin = function() {
@@ -16,12 +16,19 @@
         ApplicationUser.login(data, function(res) {
 
             $rootScope.loggedInUser = data.email;
+            $rootScope.userId = res.userId;
 
 
             var userID = res.userId;
             localStorage.setItem('userID', userID);
 
-            $location.path("/account/profile");
+            if ($stateParams.returnState == null)
+            {
+              $location.path("/app/jobs/my");
+            }
+            else  {
+              $state.go($stateParams.returnState);
+            }
         }, function(res) {
 
             $scope.errorMessage = "Your login was unsuccessful. Please check your account details and try again."
