@@ -88,7 +88,7 @@
 					<th> Bid Description </th>
 					<th> Proposed Delivery Date </th>
 					<th> Proposed Delivery Time </th>
-					<th ng-if="showCustomer"> Select Bidder </th>
+					<th ng-if="showCustomer" ng-hide="biddingComplete"> Select Bidder </th>
 				</tr>
 			</thead>
 			<tbody>
@@ -99,7 +99,6 @@
 					<td> {{ bid.proposed_delivery_date }} </td>
 					<td> {{ bid.proposed_delivery_time }} </td>
 					<td ng-if="showCustomer && !biddingComplete">  <a class="btn btn-primary" role="button" ng-click="doSelectedByCustomer(bid)" >Yes</a> </td>
-					<td ng-if="showCustomer && biddingComplete">  <a>Bidder Selected!</a> </td>
 				</tr>
 			</tbody>
 		</table>
