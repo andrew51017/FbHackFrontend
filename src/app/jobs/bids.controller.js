@@ -25,14 +25,19 @@
 
       model.user_id = userId; 
       model.job_id = job_id;
+      model.winning_bid = false;
 
-      Bid.create(model);
+      Bid.create(model, function(res) {
 
-      $location.path("/app/jobs/my");
+        $location.path("/app/jobs/my");
+
+      }, function(err) {
+        $scope.errorMessage = "Your bid could not be created."
+      });
 
     }; 
 
 
   }
-  
+
 })();
