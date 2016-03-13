@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('desktop', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap', 'lbServices'])
+    .module('desktop', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap', 'lbServices', 'uiGmapgoogle-maps'])
     .config(config);
 
   function config($stateProvider, $urlRouterProvider) {
