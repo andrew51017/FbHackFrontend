@@ -6,7 +6,7 @@
     .controller('StatusController', StatusController);
 
   /** @ngInject */
-  function StatusController($scope, $rootScope, $location, $stateParams, Job, Bid) {
+  function StatusController($scope, $rootScope, $location, $stateParams, $state, Job, Bid) {
 
   	var userId = localStorage.getItem("userID");
 
@@ -28,11 +28,11 @@
 
   		$scope.biddingComplete = job.bidding_complete;
 
-	  	 if($rootScope.userId == job.customer_id){
+	  	 if(userId == job.customer_id){
 	  	 	$scope.showCustomer = true;
-	  	 } else if ($rootScope.userId == job.business_id){
+	  	 } else if (userId == job.business_id){
 	  	 	$scope.showBusiness = true;
-	  	 } else if ($rootScope.userId == $scope.winner.user_id){
+	  	 } else if (userId == $scope.winner.user_id){
 	  	 	$scope.showCourier = true;
 	  	 };
 
@@ -66,8 +66,12 @@
 	  	 	$scope.received = true; 
 	  	 }
 
-		$scope.bids = Bid.find({
-		  filter: { job_id: job.id }
+		// $scope.bids = Bid.find({
+		//   filter: { id: job.id }
+		// });
+
+		$scope.bids = Job.bids({
+		  id: $scope.job.id,
 		});	  
 
 
@@ -103,7 +107,7 @@
 
   	$scope.doSelectedByCustomer = function(bid){
 
-  		Jobs.findById({ id: bid.job_id}, function(res) {
+  		Job.findById({ id: bid.job_id}, function(res) {
 
   			bid.winning_bid = true; 
   			bid.$save();
@@ -111,7 +115,7 @@
   			res.bidding_complete = true; 
   			res.$save();
 
-  			$location.path('/app/jobs/status/' + bid.job_id);
+  			$state.go($state.current, {}, {reload: true});
 
   		}, function(err) {
 
