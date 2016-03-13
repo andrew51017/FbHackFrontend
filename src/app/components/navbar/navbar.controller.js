@@ -6,9 +6,21 @@
     .controller('NavbarController', NavbarController);
 
   /** @ngInject */
-  function NavbarController($scope, $location, LoopBackAuth) {
+  function NavbarController($scope, $rootScope, $state, $location, LoopBackAuth) {
 
-	$scope.loggedIn = localStorage.getItem("userID") != null; 
+    var checkLogin = function() {
+
+      $scope.loggedIn = localStorage.getItem("userID") != null; 
+
+    };
+
+    checkLogin();
+
+    $rootScope.$on("refreshLogin", function() {
+
+      checkLogin();
+
+    });
 
   	$scope.logout = function() {
 
@@ -16,7 +28,9 @@
       LoopBackAuth.clearStorage();
       localStorage.clear();
 
-      $location.path("/app/account/login");
+    $scope.loggedIn = false;
+
+      $state.go("app.account.login", {}, {refresh: true});
 
   	};
 
