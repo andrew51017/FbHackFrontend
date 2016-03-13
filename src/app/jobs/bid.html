@@ -5,6 +5,8 @@
 <div class="container">
 	<div> <h1 style="text-align:center;">Bid to Win!</h1></div>
 
+	<div class="alert alert-danger alert-dismissible loginAlert" role="alert" ng-show="errorMessage"></div>
+
 	<form ng-submit="submitBid()">
 		<div class="form-group">
 			<label class="control-label" for="price">Price</label>
