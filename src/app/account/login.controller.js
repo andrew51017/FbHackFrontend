@@ -22,7 +22,7 @@
             var userID = res.userId;
             localStorage.setItem('userID', userID);
 
-            if ($stateParams.returnState == null)
+            if ($stateParams.returnState == '')
             {
               $location.path("/app/jobs/my");
             }

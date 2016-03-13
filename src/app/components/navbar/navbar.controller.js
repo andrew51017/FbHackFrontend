@@ -6,9 +6,19 @@
     .controller('NavbarController', NavbarController);
 
   /** @ngInject */
-  function NavbarController() {
-    var vm = this;
+  function NavbarController($scope, $location, LoopBackAuth) {
 
-    vm.date = new Date();
+	$scope.loggedIn = localStorage.getItem("userID") != null; 
+
+  	$scope.logout = function() {
+
+      LoopBackAuth.clearUser();
+      LoopBackAuth.clearStorage();
+      localStorage.clear();
+
+      $location.path("/app/account/login");
+
+  	};
+
   }
 })();
