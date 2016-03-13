@@ -16,6 +16,7 @@
         ApplicationUser.login(data, function(res) {
 
             $rootScope.loggedInUser = data.email;
+            $rootScope.userId = res.userId;
 
 
             var userID = res.userId;
