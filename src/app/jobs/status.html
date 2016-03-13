@@ -51,7 +51,11 @@
 			    <div class="col-sm-6 col-md-4 parcel_collected">
 			      <div style="border:0; text-align: center;">
 			        <img class="img-responsive" src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_labelled_parcel.png" alt="collected_by_courier">
-			        <div class="caption">
+			        <div class="caption" ng-if="!picked_up">
+			          <h3>The Courier is Going to Collect Your Parcel!!</h3>
+			          <p>Your item will be on its way soon!</p>
+			        </div>
+			        <div class="caption" ng-if="picked_up">
 			          <h3>The Courier Has Collected Your Parcel!!</h3>
 			          <p>Your item is on its way!</p>
 			        </div>
@@ -88,13 +92,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="bid in bids">
+				<tr ng-repeat="bid in bids" ng-class="{'alert-success': bid.winning_bid}">
 					<td> {{ bid.user_id }} </td>
 					<td> {{ bid.price }} </td>
 					<td> {{ bid.description }} </td>
 					<td> {{ bid.proposed_delivery_date }} </td>
 					<td> {{ bid.proposed_delivery_time }} </td>
-					<td ng-if="showCustomer">  <a class="btn btn-primary" role="button" ng-click="doSelectedByCustomer(bid)" >Yes</a> </td>
+					<td ng-if="showCustomer && !biddingComplete">  <a class="btn btn-primary" role="button" ng-click="doSelectedByCustomer(bid)" >Yes</a> </td>
+					<td ng-if="showCustomer && biddingComplete">  <a>Bidder Selected!</a> </td>
 				</tr>
 			</tbody>
 		</table>

@@ -6,9 +6,9 @@
 <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
         <div class="input-group stylish-input-group">
-            <input type="text" style="font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;" class="form-control"  placeholder="Search" >
+            <input ng-model="jobSearchQuery" type="text" style="font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;" class="form-control"  placeholder="Search" >
             <span class="input-group-addon">
-                <button type="submit">
+                <button ng-click="doSearch()" type="submit">
                     <span class="glyphicon glyphicon-search"></span>
                 </button>  
             </span>
@@ -20,7 +20,7 @@
 
 <ui-gmap-google-map center='map.center' zoom='map.zoom'>
 
-	<ui-gmap-markers models="mapMarkers" icon="'imgPath'" coords="'coords'"></ui-gmap-markers>
+	<ui-gmap-markers models="jobs" icon="'imgPath'" coords="'coords'"></ui-gmap-markers>
 	</ui-gmap-marker>
 
 </ui-gmap-google-map>
@@ -29,7 +29,7 @@
 <table id="tableStyle">
   <tr>
     <th>Job</th>
-    <th>Contact</th>
+    <th>Job Description</th>
     <th>Current Location</th>
     <th>Delivery Location</th>	
     <th>Max Price</th>
@@ -38,7 +38,7 @@
   </tr>
   <tr ng-repeat="job in jobs">
     <td>{{ job.title }}</td>
-    <td>{{ job.customer_id }}</td>
+    <td>{{ job.description }}</td>
     <td>{{ job.location }}</td>
     <td>{{ job.destination }}</td>
     <td>{{ job.job_price }}</td>
