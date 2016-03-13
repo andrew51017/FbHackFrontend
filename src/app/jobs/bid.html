@@ -1,0 +1,24 @@
+<div class="container">
+	<div> <h1 style="text-align:center;">Bid on this job.</h1></div>
+
+	<form ng-submit="submitBid()">
+		<div class="form-group">
+			<label class="control-label" for="price">Price</label>
+			<input class="form-control" type="number" id="price" ng-model="bid.price" placeholder="Price">
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="description">Description</label>
+			<textarea class="form-control" id="description" ng-model="bid.description" placeholder="Description"></textarea>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="deliveryDate">Delivery date</label>
+			<input class="form-control" type="date" id="deliveryDate" ng-model="bid.proposed_delivery_date" placeholder="Delivery date">
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="deliveryTime">Delivery time</label>
+			<input class="form-control" type="time" id="deliveryTime" ng-model="bid.proposed_delivery_time" placeholder="Delivery time">
+		</div>
+		<hr/>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>

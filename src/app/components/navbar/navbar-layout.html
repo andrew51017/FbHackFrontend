@@ -20,10 +20,10 @@
                 <li ng-show="loggedIn">
                     <a href="#" class="page-scroll" ng-click="logout()">Logout</a>
                 </li>
-                <li>
+                <li ng-show="loggedIn">
                     <a class="page-scroll" ui-sref="app.jobs.myjobs">My Jobs</a>
                 </li>
-                <li>
+                <li ng-show="loggedIn">
                     <a class="page-scroll" ui-sref="app.jobs.availablejobs">Available Jobs</a>
                 </li>
             </ul>

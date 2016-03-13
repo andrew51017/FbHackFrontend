@@ -59,6 +59,11 @@
         url: '/status/:id',
         templateUrl: 'app/jobs/status.html',
         controller: 'StatusController'
+      })
+      .state('app.jobs.bid', {
+        url: '/bid/:id',
+        templateUrl: 'app/jobs/bid.html',
+        controller: 'BidController'
       });
 
     $urlRouterProvider.otherwise('/');
@@ -66,7 +71,7 @@
     $httpProvider.interceptors.push(function($q, $location, LoopBackAuth) {
       return {
         responseError: function(rejection) {
-          if (rejection.status == 401) {
+          if (rejection.status == 401 && $location.path() != "/app/account/login/") {
             //Now clearing the loopback values from client browser for safe logout...
             LoopBackAuth.clearUser();
             LoopBackAuth.clearStorage();

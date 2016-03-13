@@ -48,7 +48,6 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.replace('../../bower_components/bootstrap/fonts/', '../fonts/'))
-    .pipe($.csso())
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
     .pipe($.useref())
