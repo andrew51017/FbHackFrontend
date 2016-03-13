@@ -1,0 +1,118 @@
+<section id="status">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading">Your Job Status</h2>
+				<hr class="primary">
+			</div>
+		</div>
+	</div>
+	<div class="business" ng-if="showBusiness">
+		<div class="container">
+			<div class="row">
+			  <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-6">
+			    <div style="border:0; text-align: center;">
+			      <img class="img-responsive"  src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_fragile_parcel.png" alt="collected_from_business">
+			      <div class="caption">
+			        <h3>Has the Courier Accepted the Parcel from You?</h3>
+			        <p><a class="btn btn-primary" role="button" ng-click="doCollectedByCourier()" >Yes</a></p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="courier" ng-if="showCourier">
+		<div class="container">
+			<div class="row">
+			  <div class="col-sm-6 col-md-4 col-md-offset-2">
+			    <div style="border:0; text-align: center;">
+			      <img class="img-responsive" src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_fragile_parcel.png" alt="collected_by_courier">
+			      <div class="caption">
+			        <h3>Have You Accepted the Parcel from the Business?</h3>
+			        <p><a class="btn btn-primary" role="button" ng-click="doAcceptedFromBusiness()">Yes</a></p>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="col-sm-6 col-md-4">
+			    <div style="border:0; text-align: center;">
+			      <img class="img-responsive" src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_labelled_parcel.png" alt="collected_by_courier">
+			      <div class="caption">
+			        <h3>Have You Completed the Delivery?</h3>
+			        <p><a class="btn btn-primary" role="button" ng-click="doCompletedDelivery()">Yes</a></p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="customer" ng-if="showCustomer">
+		<div class="container">
+			<div class="row">
+			  <div class="col-sm-6 col-md-4 select_courier">
+			    <div style="border:0; text-align: center;">
+			      <img class="img-responsive" src="https://cdn2.iconfinder.com/data/icons/shopping-online-e-commerce-store/512/shopping_auction-512.png" alt="collected_by_courier">
+			      <div class="caption">
+			        <h3>Time to Select Your Courier!</h3>
+			        <p>Scroll down to see who has bid on your parcel!</p>
+			      </div>
+			    </div>
+			  </div>
+			    <div class="col-sm-6 col-md-4 parcel_collected">
+			      <div style="border:0; text-align: center;">
+			        <img class="img-responsive" src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_labelled_parcel.png" alt="collected_by_courier">
+			        <div class="caption">
+			          <h3>The Courier Has Collected Your Parcel!!</h3>
+			          <p>Your item is on its way!</p>
+			        </div>
+			      </div>
+			  </div>
+			  <div class="col-sm-6 col-md-4 parcel_received">
+			    <div style="border:0; text-align: center;">
+			      <img class="img-responsive" src="http://parcelstation.co.uk/wp-content/uploads/2015/06/icon_fragile_parcel.png" alt="collected_by_courier">
+			      <div class="caption">
+			        <h3>Have You Received Your Parcel?</h3>
+			        <p><a class="btn btn-primary" role="button" ng-click="doReceivedByCustomer()" >Yes</a></p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+
+</section>
+<section id="bidding">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading">Current Bids</h2>
+				<hr class="primary">
+			</div>
+		</div>
+	</div>
+	<div class="bids">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th> Courier Username </th>
+					<th> Bid Price </th>
+					<th> Bid Description </th>
+					<th> Proposed Delivery Date </th>
+					<th> Proposed Delivery Time </th>
+					<th> Select Bidder </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="bid in bids">
+					<td> {{ bid.user_id }} </td>
+					<td> {{ bid.price }} </td>
+					<td> {{ bid.description }} </td>
+					<td> {{ bid.proposed_delivery_date }} </td>
+					<td> {{ bid.proposed_delivery_time }} </td>
+					<td> <a class="btn btn-primary" role="button" ng-click="doSelectedByCustomer(bid.user_id)" >Yes</a> </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
