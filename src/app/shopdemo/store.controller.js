@@ -31,7 +31,8 @@
 			  "accepted_by_courier": false,
 			  "collected_from_business": false,
 			  "customer_id": userId,
-			  "business_id": 1
+			  "business_id": 1,
+			  "bidding_complete": false
 			}; 
 
 
